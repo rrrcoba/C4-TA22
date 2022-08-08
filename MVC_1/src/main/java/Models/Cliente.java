@@ -11,6 +11,14 @@ import javax.swing.JOptionPane;
 
 public class Cliente {
 
+	// IMPORTANTE
+	// Recordad cambiar estoo
+	final static String user = "remote";
+	final static String pass = "abcd1234";
+	final static String url = "jdbc:mysql://192.168.1.31:3306?useTimezone=true&serverTimezone=UTC";
+	final static String db = "ud22ex1";
+	
+	// Variables
 	private int id;
 	private String name;
 	private String surname;
@@ -20,33 +28,17 @@ public class Cliente {
 
 	private Connection c;
 
-	//	//Metodo para imprimir los registros
-	//	public java.sql.ResultSet select(String db) {
-	//
-	//		java.sql.ResultSet resultSet;
-	//		try {
-	//			resultSet = Conexion.getValues(db, "Cliente");
-	//		} catch (Exception e) {
-	//			// TODO Auto-generated catch block
-	//			e.printStackTrace();
-	//		}
-	//		return resultSet;
-	//	}
-
-
-
 	/**
 	 * Creamos la conexión
 	 */
-	public void openConnection(String user, String pass) {
+	public void openConnection() {
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			c = DriverManager.getConnection("jdbc:mysql://192.168.1.58:3306",user,pass);
+			c = DriverManager.getConnection(url,user,pass);
 
-			System.out.println("Server Connected");
+			System.out.println("Connected.");
 
-		} catch (SQLException | ClassNotFoundException e) {
-			System.out.println("No se ha podido conectar con mi base de datos");
+		} catch (SQLException e) {
+			System.out.println("No se ha podido conectar con mi base de datos.");
 			System.out.println(e);
 		}
 	}
@@ -58,11 +50,10 @@ public class Cliente {
 
 		try {
 			c.close();
-			System.out.println("Se ha finalizado la conexión con el servidor");
+			System.out.println("Se ha finalizado la conexión con el servidor.");
 
 		} catch (SQLException e) {
-			//Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, e);
-			System.out.println("No se ha podido cerrar la conexión con mi base de datos");
+			System.out.println("No se ha podido cerrar la conexión con mi base de datos.");
 			System.out.println(e);
 		}
 	}
@@ -72,32 +63,33 @@ public class Cliente {
 	 * 
 	 * @throws ClassNotFoundException
 	 */
-	public void insertData(String name, String surname, String direction, int DNI, Date date) {
+	public void insertData(String name, String surname, String direction, int dni, Date date) {
 		try {
-			String Querydb = "USE ud22ex1;";
+			String Querydb = "USE "+db+";";
 			Statement stdb = c.createStatement();
 			stdb.executeUpdate(Querydb);
 
 			String Query = "INSERT INTO cliente (nombre, apellido, direccion, dni, fecha) values('" + name + "', '" + surname +
-			"', '" + direction + "', " + DNI + ", " + date + ");";
+			"', '" + direction + "', " + dni + ", " + date + ");";
 			Statement st = c.createStatement();
 			st.executeUpdate(Query);
-			JOptionPane.showMessageDialog(null, "Datos almacenados correctamente");
+			JOptionPane.showMessageDialog(null, "Datos almacenados correctamente.");
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-			JOptionPane.showMessageDialog(null, "Error en el almacenamiento");
+			JOptionPane.showMessageDialog(null, "Error en el almacenamiento.", "ERROR", 0);
 		}
 	}
 
 	/**
 	 * Leemos registros
+	 * 
 	 * @param db
 	 * @param table_name
 	 * @return
 	 */
-	public ResultSet getValues(String db, String table_name) {
+	public ResultSet getValues(String table_name) {
 		try {
-			String Querydb = "USE ud22ex1;";
+			String Querydb = "USE "+db+";";
 			Statement stdb = c.createStatement();
 			stdb.executeUpdate(Querydb);
 
@@ -110,13 +102,14 @@ public class Cliente {
 			return resultSet;
 
 		} catch (SQLException e) {
-			JOptionPane.showMessageDialog(null,e.getMessage() + "\n Error en la adquisicion de datos");
+			JOptionPane.showMessageDialog(null, e.getMessage() + "\n Error en la adquisicion de datos.", "ERROR", 0);
 		}
 		return null;
 	}
 
 	/**
 	 * Eliminación de datos registrados
+	 * 
 	 * @param table_name
 	 * @param field
 	 * @param ID
@@ -129,6 +122,7 @@ public class Cliente {
 			st.executeUpdate(Query);
 
 		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, e.getMessage() + "\n Error en la eliminación de datos.", "ERROR", 0);
 			e.printStackTrace();
 		}
 
@@ -150,16 +144,17 @@ public class Cliente {
 			st.executeUpdate(Query);
 
 		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, e.getMessage() + "\n Error en la actualización de datos.", "ERROR", 0);
 			e.printStackTrace();
 		}
 
 	}
 
-	public Connection getC() {
+	public Connection getConnection() {
 		return c;
 	}
 
-	public void setC(Connection c) {
+	public void setConnection(Connection c) {
 		this.c = c;
 	}
 
