@@ -35,8 +35,6 @@ public class View extends JFrame {
 	 * Create the frame.
 	 */
 	public View() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 437, 347);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -58,7 +56,7 @@ public class View extends JFrame {
 		btnNewButton_3.setBounds(145, 229, 118, 23);
 		contentPane.add(btnNewButton_3);
 		
-		JLabel lblNewLabel = new JLabel("Indica lo que deseas hacer");
+		JLabel lblNewLabel = new JLabel("Porfavor, indica lo que deseas hacer:");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel.setBounds(31, 47, 349, 32);
