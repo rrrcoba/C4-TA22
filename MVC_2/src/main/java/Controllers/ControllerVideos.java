@@ -1,4 +1,4 @@
-package main.java.Controllers;
+package Controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,8 +8,8 @@ import java.sql.SQLException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import main.java.Models.Videos;
-import main.java.Views.ViewV;
+import Models.Videos;
+import Views.ViewV;
 
 public class ControllerVideos implements ActionListener{
 
