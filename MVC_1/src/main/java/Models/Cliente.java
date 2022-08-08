@@ -25,21 +25,11 @@ public class Cliente {
 	}
 
 	//Metodo para imprimir los registros
-	public void select(String db) {
+	public java.sql.ResultSet select(String db) {
 
 		java.sql.ResultSet resultSet  = conexion.getValues(db, "Cliente");
-
-		try {
-			while(resultSet.next()) {
-				control.showName(resultSet.getString("Nombre"));
-				control.showSurname(resultSet.getString("Apellido"));
-				control.showDirection(resultSet.getString("Dirección"));
-				control.showDni(resultSet.getString("DNI"));
-				control.showDate(resultSet.getString("Fecha"));
-			}
-		} catch (SQLException e) {
-			System.out.println(e);
-		}
+		return resultSet;
+		
 	}
 	
 	
