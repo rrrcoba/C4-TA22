@@ -11,12 +11,6 @@ import Views.View;
 
 public class Controller implements ActionListener{
 	
-	// IMPORTANTE
-	// Recordad cambiar estoo
-	final static String user = "remote";
-	final static String pass = "abcd1234";
-	final static String ip = "jdbc:mysql://192.168.1.31:3306?useTimezone=true&serverTimezone=UTC";
-
 	// Variables
 	private Cliente client;
 	private View view;
@@ -56,6 +50,9 @@ public class Controller implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if (view.getBtnCreate() == e.getSource()) {
 			//TODO acción del botón create
+			
+//			view.getContentPaneForm().setVisible(true);
+//			view.getContentPane().setVisible(false);
 		} else if (view.getBtnSelect() == e.getSource()) {
 			//TODO
 		} else if (view.getBtnUpdate() == e.getSource()) {
@@ -65,6 +62,10 @@ public class Controller implements ActionListener{
 		}
 		
 		System.out.println("Accion del botón OK");
+		
+	}
+	
+	public void initializeContentPaneForm () {
 		
 	}
 	
