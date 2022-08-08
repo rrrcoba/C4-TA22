@@ -66,7 +66,7 @@ public class Cliente {
 	 */
 	public void insertData(String name, String surname, String direction, int dni, String date) {
 		try {
-			String Querydb = "USE "+db+";";
+			String Querydb = "USE " + db + ";";
 			Statement stdb = c.createStatement();
 			stdb.executeUpdate(Querydb);
 
@@ -90,7 +90,7 @@ public class Cliente {
 	 */
 	public ResultSet getValues(String table_name) {
 		try {
-			String Querydb = "USE "+db+";";
+			String Querydb = "USE "+ db + ";";
 			Statement stdb = c.createStatement();
 			stdb.executeUpdate(Querydb);
 
@@ -115,12 +115,16 @@ public class Cliente {
 	 * @param field
 	 * @param ID
 	 */
-	public void deleteRecord(String table_name, String field, String ID) {
+	public void deleteRecord(String ID) {
 
 		try {
-			String Query = "DELETE FROM cliente WHERE " + field + " = \"" + ID + "\"";
+			String Querydb = "USE " + db + ";";
+			Statement stdb = c.createStatement();
+			stdb.executeUpdate(Querydb);
+			String Query = "DELETE FROM cliente WHERE ID = " + ID + ";";
 			Statement st = c.createStatement();
 			st.executeUpdate(Query);
+			JOptionPane.showMessageDialog(null, "Datos eliminados correctamente.");
 
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage() + "\n Error en la eliminación de datos.", "ERROR", 0);

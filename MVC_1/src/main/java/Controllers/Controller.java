@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import Models.Cliente;
 import Views.View;
@@ -74,6 +75,10 @@ public class Controller implements ActionListener{
 
 		} else if (view.getBtnDelete() == e.getSource()) {
 			//TODO Acción Panel inicial botón Eliminar
+			String id = JOptionPane.showInputDialog("Indica la ID del registro que quieres eliminar.");
+			client.openConnection();
+			client.deleteRecord(id);
+			client.closeConnection();
 
 		} 
 		else if (view.getBtnSend() == e.getSource()) {
