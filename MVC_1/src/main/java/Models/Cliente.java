@@ -7,41 +7,34 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
 
+import javax.swing.JOptionPane;
+
 public class Cliente {
-	
+
+	private int id;
 	private String name;
 	private String surname;
 	private String direction;
 	private int DNI;
 	private Date date;
-	
+
 	private Connection c;
 
-	//Metodo para insertar registros a la tabla
-	public void insert(String name, String surname, String direction, int DNI, Date date) {
+	//	//Metodo para imprimir los registros
+	//	public java.sql.ResultSet select(String db) {
+	//
+	//		java.sql.ResultSet resultSet;
+	//		try {
+	//			resultSet = Conexion.getValues(db, "Cliente");
+	//		} catch (Exception e) {
+	//			// TODO Auto-generated catch block
+	//			e.printStackTrace();
+	//		}
+	//		return resultSet;
+	//	}
 
-		this.name = "'"+name+"'";	
-		this.surname = "'"+surname+"'";	
-		this.direction = "'"+direction+"'";
-		this.DNI = DNI;
-		this.date = date;		
-	}
 
-//	//Metodo para imprimir los registros
-//	public java.sql.ResultSet select(String db) {
-//
-//		java.sql.ResultSet resultSet;
-//		try {
-//			resultSet = Conexion.getValues(db, "Cliente");
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		return resultSet;
-//	}
-	
-	
-	
+
 	/**
 	 * Creamos la conexión
 	 */
@@ -52,13 +45,12 @@ public class Cliente {
 
 			System.out.println("Server Connected");
 
-
 		} catch (SQLException | ClassNotFoundException e) {
 			System.out.println("No se ha podido conectar con mi base de datos");
 			System.out.println(e);
 		}
 	}
-	
+
 	/**
 	 * Cerramos la conexión
 	 */
@@ -80,23 +72,23 @@ public class Cliente {
 	 * 
 	 * @throws ClassNotFoundException
 	 */
-	public void insertData(String table_name, String fields, String values) {
+	public void insertData(String name, String surname, String direction, int DNI, Date date) {
 		try {
 			String Querydb = "USE ud22ex1;";
 			Statement stdb = c.createStatement();
 			stdb.executeUpdate(Querydb);
 
-			String Query = "INSERT INTO " + table_name + "(" + fields + ") values(" + values +");";
+			String Query = "INSERT INTO cliente (nombre, apellido, direccion, dni, fecha) values('" + name + "', '" + surname +
+			"', '" + direction + "', " + DNI + ", " + date + ");";
 			Statement st = c.createStatement();
 			st.executeUpdate(Query);
-
-			System.out.println("Datos almacenados correctamente");
+			JOptionPane.showMessageDialog(null, "Datos almacenados correctamente");
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-			System.out.println("Error en el almacenamiento");
+			JOptionPane.showMessageDialog(null, "Error en el almacenamiento");
 		}
 	}
-	
+
 	/**
 	 * Leemos registros
 	 * @param db
@@ -105,11 +97,11 @@ public class Cliente {
 	 */
 	public ResultSet getValues(String db, String table_name) {
 		try {
-			String Querydb = "USE " + db + ";";
+			String Querydb = "USE ud22ex1;";
 			Statement stdb = c.createStatement();
 			stdb.executeUpdate(Querydb);
 
-			String Query = "SELECT * FROM " + table_name + ";";
+			String Query = "SELECT * FROM cliente;";
 
 			Statement st = c.createStatement();
 			java.sql.ResultSet resultSet;
@@ -118,11 +110,11 @@ public class Cliente {
 			return resultSet;
 
 		} catch (SQLException e) {
-			System.out.println(e.getMessage()); System.out.println("Error en la adquisicion de datos");
+			JOptionPane.showMessageDialog(null,e.getMessage() + "\n Error en la adquisicion de datos");
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Eliminación de datos registrados
 	 * @param table_name
@@ -132,7 +124,7 @@ public class Cliente {
 	public void deleteRecord(String table_name, String field, String ID) {
 
 		try {
-			String Query = "DELETE FROM " + table_name + " WHERE " + field + " = \"" + ID + "\"";
+			String Query = "DELETE FROM cliente WHERE " + field + " = \"" + ID + "\"";
 			Statement st = c.createStatement();
 			st.executeUpdate(Query);
 
@@ -141,7 +133,7 @@ public class Cliente {
 		}
 
 	}
-	
+
 	/**
 	 * Actualización de datos registrados
 	 * @param table_name
@@ -153,7 +145,7 @@ public class Cliente {
 	public void updateData(String table_name, String new_value, String field, String ID, String field_id) {
 
 		try {
-			String Query = "UPDATE " + table_name + " SET " + field + " = \"" + new_value + "\"" + " WHERE " + field_id + " = \"" + ID + "\"";
+			String Query = "UPDATE cliente SET " + field + " = \"" + new_value + "\"" + " WHERE " + field_id + " = \"" + ID + "\"";
 			Statement st = c.createStatement();
 			st.executeUpdate(Query);
 
@@ -170,7 +162,7 @@ public class Cliente {
 	public void setC(Connection c) {
 		this.c = c;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
