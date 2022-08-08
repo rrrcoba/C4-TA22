@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 
-public class Cliente {
+public class Videos {
 
 	// IMPORTANTE
 	// Recordad cambiar estoo
@@ -55,14 +55,14 @@ public class Cliente {
 	 * 
 	 * @throws ClassNotFoundException
 	 */
-	public void insertData(String name, String surname, String direction, int dni, String date) {
+	public void insertData(String title, String director, String cli_id) {
 		try {
 			String Querydb = "USE " + db + ";";
 			Statement stdb = c.createStatement();
 			stdb.executeUpdate(Querydb);
 
-			String Query = "INSERT INTO cliente (nombre, apellido, direccion, dni, fecha) values('" + name + "', '" + surname +
-			"', '" + direction + "', " + dni + ", '" + date + "');";
+			String Query = "INSERT INTO videos (title, director, cli_id) values('" + title + "', '" + director +
+					"', " + cli_id + ")";
 			Statement st = c.createStatement();
 			st.executeUpdate(Query);
 			JOptionPane.showMessageDialog(null, "Datos almacenados correctamente.");
@@ -85,7 +85,7 @@ public class Cliente {
 			Statement stdb = c.createStatement();
 			stdb.executeUpdate(Querydb);
 
-			String Query = "SELECT * FROM cliente;";
+			String Query = "SELECT * FROM videos;";
 
 			Statement st = c.createStatement();
 			java.sql.ResultSet resultSet;
@@ -112,8 +112,8 @@ public class Cliente {
 			String Querydb = "USE " + db + ";";
 			Statement stdb = c.createStatement();
 			stdb.executeUpdate(Querydb);
-      
-			String Query = "DELETE FROM cliente WHERE ID = " + ID + ";";
+
+			String Query = "DELETE FROM videos WHERE ID = " + ID + ";";
 			Statement st = c.createStatement();
 			st.executeUpdate(Query);
 			JOptionPane.showMessageDialog(null, "Datos eliminados correctamente.");
@@ -129,19 +129,16 @@ public class Cliente {
 	 * Actualización de datos registrados
 	 * 
 	 * @param id
-	 * @param newName
-	 * @param newSurname
-	 * @param newDirection
-	 * @param newDni
-	 * @param newDate
+	 * @param title
+	 * @param director
 	 */
-	public void updateData(int id, String newName, String newSurname, String newDirection, int newDni, String newDate) {
+	public void updateData(int id, String title, String director, String cli) {
 		try {
 			String Querydb = "USE " + db + ";";
 			Statement stdb = c.createStatement();
 			stdb.executeUpdate(Querydb);
-			
-			String Query = "UPDATE cliente SET nombre='" + newName + "', apellido='" + newSurname + "', direccion='"+ newDirection + "', dni=" + newDni + ", fecha='" + newDate + "' WHERE ID=" + id + ";";
+
+			String Query = "UPDATE videos SET title ='" + title + "', director ='" + director + "' WHERE ID=" + id + ";";
 			Statement st = c.createStatement();
 			st.executeUpdate(Query);
 			JOptionPane.showMessageDialog(null, "Actualización realizada con éxito.");
@@ -152,3 +149,6 @@ public class Cliente {
 		}
 	}
 }
+
+
+
