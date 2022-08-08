@@ -30,6 +30,7 @@ public class View extends JFrame {
 	private JTextField textField_surname;
 	private JTextField textField_direction;
 	private JTextField textField_dni;
+	private JTextField textField_date;
 
 	private JLabel labelTitle;
 	private JButton btnSend;
@@ -37,6 +38,7 @@ public class View extends JFrame {
 	private JLabel surname;
 	private JLabel direction;
 	private JLabel dni;
+	private JLabel date;
 
 	
 
@@ -101,16 +103,22 @@ public class View extends JFrame {
 		textField_dni.setBounds(112, 150, 135, 20);
 		contentPane.add(textField_dni);		
 		
+		textField_date = new JTextField();
+		textField_date.setVisible(false);
+		textField_date.setColumns(10);
+		textField_date.setBounds(112, 181, 135, 20);
+		contentPane.add(textField_date);
+		
 		btnSend = new JButton("Enviar");
 		btnSend.setVisible(false);
-		btnSend.setBounds(122, 181, 89, 23);
+		btnSend.setBounds(122, 211, 89, 23);
 		contentPane.add(btnSend);
 		
-		labelTitle = new JLabel("Crear Datos");
+		labelTitle = new JLabel("");
 		labelTitle.setVisible(false);
 		labelTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		labelTitle.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		labelTitle.setBounds(162, 11, 160, 23);
+		labelTitle.setBounds(145, 11, 160, 23);
 		contentPane.add(labelTitle);
 		
 		labelName = new JLabel("Nombre:");
@@ -136,6 +144,14 @@ public class View extends JFrame {
 		dni.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		dni.setBounds(46, 147, 61, 23);
 		contentPane.add(dni);
+		
+		date = new JLabel("Fecha:");
+		date.setVisible(false);
+		date.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		date.setBounds(46, 180, 61, 23);
+		contentPane.add(date);
+		
+		
 
 			
 		
@@ -405,5 +421,21 @@ public class View extends JFrame {
 	 */
 	public void setDni(JLabel dni) {
 		this.dni = dni;
+	}
+
+	public JTextField getTextField_date() {
+		return textField_date;
+	}
+
+	public void setTextField_date(JTextField textField_date) {
+		this.textField_date = textField_date;
+	}
+
+	public JLabel getDate() {
+		return date;
+	}
+
+	public void setDate(JLabel date) {
+		this.date = date;
 	}
 }
