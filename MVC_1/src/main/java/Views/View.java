@@ -16,7 +16,7 @@ public class View extends JFrame {
 
 	private JPanel contentPane;
 	
-	/* Botones*/
+	/* Elementos del panel inicial*/
 	private JButton btnCreate;
 	private JButton btnUpdate;
 	private JButton btnSelect;
@@ -24,34 +24,31 @@ public class View extends JFrame {
 
 	private JLabel lblMsg;
 
+	
+	/* Elementos del panel del formulario */
 	private JTextField textField_name;
 	private JTextField textField_surname;
 	private JTextField textField_direction;
 	private JTextField textField_dni;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					View frame = new View();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private JLabel labelTitle;
+	private JButton btnSend;
+	private JLabel labelName;
+	private JLabel surname;
+	private JLabel direction;
+	private JLabel dni;
+
+	
 
 	/**
-	 * Create the frame.
+	 *	Creamos el marco.
 	 */
 	public View() {
+		// Panel inicial con sus elementos
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+		contentPane.setVisible(true);
 		contentPane.setLayout(null);
 		
 		btnCreate = new JButton("Crear");
@@ -70,35 +67,21 @@ public class View extends JFrame {
 		btnDelete.setBounds(145, 229, 118, 23);
 		contentPane.add(btnDelete);
 		
-		JLabel name = new JLabel("Nombre: ");
-		name.setVisible(false);
-		name.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		name.setBounds(46, 45, 79, 23);
-		contentPane.add(name);
+		lblMsg = new JLabel("Porfavor, indica lo que deseas hacer:");
+		lblMsg.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMsg.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblMsg.setBounds(31, 47, 349, 32);
+		contentPane.add(lblMsg);
 		
-		JLabel surname = new JLabel("Apellido:");
-		surname.setVisible(false);
-		surname.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		surname.setBounds(46, 79, 79, 23);
-		contentPane.add(surname);
 		
-		JLabel direction = new JLabel("Dirección:");
-		direction.setVisible(false);
-		direction.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		direction.setBounds(46, 113, 79, 23);
-		contentPane.add(direction);
 		
-		JLabel dni = new JLabel("DNI:");
-		dni.setVisible(false);
-		dni.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		dni.setBounds(46, 147, 61, 23);
-		contentPane.add(dni);
-		
+		/* Formulario sin contentPaneForm */
+		//TODO poner campos fecha
 		textField_name = new JTextField();
 		textField_name.setVisible(false);
+		textField_name.setColumns(10);
 		textField_name.setBounds(112, 48, 135, 20);
 		contentPane.add(textField_name);
-		textField_name.setColumns(10);
 		
 		textField_surname = new JTextField();
 		textField_surname.setVisible(false);
@@ -116,25 +99,102 @@ public class View extends JFrame {
 		textField_dni.setVisible(false);
 		textField_dni.setColumns(10);
 		textField_dni.setBounds(112, 150, 135, 20);
-		contentPane.add(textField_dni);
+		contentPane.add(textField_dni);		
 		
-		JLabel title = new JLabel("Crear Datos");
-		title.setVisible(false);
-		title.setHorizontalAlignment(SwingConstants.CENTER);
-		title.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		title.setBounds(162, 11, 160, 23);
-		contentPane.add(title);
+		btnSend = new JButton("Enviar");
+		btnSend.setVisible(false);
+		btnSend.setBounds(122, 181, 89, 23);
+		contentPane.add(btnSend);
 		
-		JButton send = new JButton("Enviar");
-		send.setVisible(false);
-		send.setBounds(122, 181, 89, 23);
-		contentPane.add(send);
+		labelTitle = new JLabel("Crear Datos");
+		labelTitle.setVisible(false);
+		labelTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		labelTitle.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		labelTitle.setBounds(162, 11, 160, 23);
+		contentPane.add(labelTitle);
 		
-		lblMsg = new JLabel("Porfavor, indica lo que deseas hacer:");
-		lblMsg.setHorizontalAlignment(SwingConstants.CENTER);
-		lblMsg.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblMsg.setBounds(31, 47, 349, 32);
-		contentPane.add(lblMsg);
+		labelName = new JLabel("Nombre:");
+		labelName.setVisible(false);
+		labelName.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		labelName.setBounds(46, 45, 79, 23);
+		contentPane.add(labelName);
+		
+		surname = new JLabel("Apellido:");
+		surname.setVisible(false);
+		surname.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		surname.setBounds(46, 79, 79, 23);
+		contentPane.add(surname);
+		
+		direction = new JLabel("Dirección:");
+		direction.setVisible(false);
+		direction.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		direction.setBounds(46, 113, 79, 23);
+		contentPane.add(direction);
+		
+		dni = new JLabel("DNI:");
+		dni.setVisible(false);
+		dni.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		dni.setBounds(46, 147, 61, 23);
+		contentPane.add(dni);
+
+			
+		
+//		/* ContentPaneForm and buttons */
+//		JPanel contentPaneForm = new JPanel();
+//		contentPaneForm.setBorder(new EmptyBorder(5, 5, 5, 5));
+//		setContentPane(contentPaneForm);
+//		contentPaneForm.setLayout(null);
+//		contentPaneForm.setVisible(false);
+//		
+//		textField_name = new JTextField();
+//		textField_name.setBounds(112, 48, 135, 20);
+//		contentPaneForm.add(textField_name);
+//		textField_name.setColumns(10);
+//		
+//		textField_surname = new JTextField();
+//		textField_surname.setColumns(10);
+//		textField_surname.setBounds(112, 82, 135, 20);
+//		contentPaneForm.add(textField_surname);
+//		
+//		textField_direction = new JTextField();
+//		textField_direction.setColumns(10);
+//		textField_direction.setBounds(112, 113, 135, 20);
+//		contentPaneForm.add(textField_direction);
+//		
+//		textField_dni = new JTextField();
+//		textField_dni.setColumns(10);
+//		textField_dni.setBounds(112, 150, 135, 20);
+//		contentPaneForm.add(textField_dni);
+//		
+//		btnSend = new JButton("Enviar");
+//		btnSend.setBounds(122, 181, 89, 23);
+//		contentPaneForm.add(btnSend);
+//		
+//		labelTitle = new JLabel("Crear Datos");
+//		labelTitle.setHorizontalAlignment(SwingConstants.CENTER);
+//		labelTitle.setFont(new Font("Tahoma", Font.PLAIN, 18));
+//		labelTitle.setBounds(162, 11, 160, 23);
+//		contentPaneForm.add(labelTitle);
+//		
+//		labelName = new JLabel("Nombre:");
+//		labelName.setFont(new Font("Tahoma", Font.PLAIN, 14));
+//		labelName.setBounds(46, 45, 79, 23);
+//		contentPaneForm.add(labelName);
+//		
+//		surname = new JLabel("Apellido:");
+//		surname.setFont(new Font("Tahoma", Font.PLAIN, 14));
+//		surname.setBounds(46, 79, 79, 23);
+//		contentPaneForm.add(surname);
+//		
+//		direction = new JLabel("Dirección:");
+//		direction.setFont(new Font("Tahoma", Font.PLAIN, 14));
+//		direction.setBounds(46, 113, 79, 23);
+//		contentPaneForm.add(direction);
+//		
+//		dni = new JLabel("DNI:");
+//		dni.setFont(new Font("Tahoma", Font.PLAIN, 14));
+//		dni.setBounds(46, 147, 61, 23);
+//		contentPaneForm.add(dni);
 	}
 
 	/**
@@ -205,5 +265,145 @@ public class View extends JFrame {
 	 */
 	public void setLblMsg(JLabel lblMsg) {
 		this.lblMsg = lblMsg;
+	}
+
+	/**
+	 * @return the textField_name
+	 */
+	public JTextField getTextField_name() {
+		return textField_name;
+	}
+
+	/**
+	 * @param textField_name the textField_name to set
+	 */
+	public void setTextField_name(JTextField textField_name) {
+		this.textField_name = textField_name;
+	}
+
+	/**
+	 * @return the textField_surname
+	 */
+	public JTextField getTextField_surname() {
+		return textField_surname;
+	}
+
+	/**
+	 * @param textField_surname the textField_surname to set
+	 */
+	public void setTextField_surname(JTextField textField_surname) {
+		this.textField_surname = textField_surname;
+	}
+
+	/**
+	 * @return the textField_direction
+	 */
+	public JTextField getTextField_direction() {
+		return textField_direction;
+	}
+
+	/**
+	 * @param textField_direction the textField_direction to set
+	 */
+	public void setTextField_direction(JTextField textField_direction) {
+		this.textField_direction = textField_direction;
+	}
+
+	/**
+	 * @return the textField_dni
+	 */
+	public JTextField getTextField_dni() {
+		return textField_dni;
+	}
+
+	/**
+	 * @param textField_dni the textField_dni to set
+	 */
+	public void setTextField_dni(JTextField textField_dni) {
+		this.textField_dni = textField_dni;
+	}
+
+	/**
+	 * @return the title
+	 */
+	public JLabel getLabelTitle() {
+		return this.labelTitle;
+	}
+
+	/**
+	 * @param title the title to set
+	 */
+	public void setTitle(JLabel title) {
+		this.labelTitle = title;
+	}
+
+	/**
+	 * @return the btnSend
+	 */
+	public JButton getBtnSend() {
+		return btnSend;
+	}
+
+	/**
+	 * @param btnSend the button Send to set
+	 */
+	public void setBtnSend(JButton btnSend) {
+		this.btnSend = btnSend;
+	}
+
+	/**
+	 * @return the name
+	 */
+	public JLabel getLabelName() {
+		return this.labelName;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(JLabel name) {
+		this.labelName = name;
+	}
+
+	/**
+	 * @return the surname
+	 */
+	public JLabel getSurname() {
+		return surname;
+	}
+
+	/**
+	 * @param surname the surname to set
+	 */
+	public void setSurname(JLabel surname) {
+		this.surname = surname;
+	}
+
+	/**
+	 * @return the direction
+	 */
+	public JLabel getDirection() {
+		return direction;
+	}
+
+	/**
+	 * @param direction the direction to set
+	 */
+	public void setDirection(JLabel direction) {
+		this.direction = direction;
+	}
+
+	/**
+	 * @return the dni
+	 */
+	public JLabel getDni() {
+		return dni;
+	}
+
+	/**
+	 * @param dni the dni to set
+	 */
+	public void setDni(JLabel dni) {
+		this.dni = dni;
 	}
 }
