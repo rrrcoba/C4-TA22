@@ -2,12 +2,11 @@ package Controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import Models.Cliente;
 import Views.View;
@@ -66,6 +65,25 @@ public class Controller implements ActionListener{
 
 		} else if (view.getBtnSelect() == e.getSource()) {
 			//TODO Acción Panel inicial botón Seleccionar
+			
+			ResultSet r = null;
+			client.openConnection();
+			r = client.getValues();
+			
+			try {
+				while(r.next()) {
+					System.out.println("Id: " + r.getString("ID"));
+					System.out.println("Nombre: " + r.getString("nombre"));
+					System.out.println("Apellido: " + r.getString("apellido"));
+					System.out.println("Dirección: " + r.getString("direccion"));
+					System.out.println("DNI: " + r.getString("dni"));
+					System.out.println("Fecha: " + r.getString("fecha"));
+				}
+			} catch (SQLException ex) {
+				System.out.println(ex);
+			}
+
+			client.closeConnection();
 
 		} else if (view.getBtnUpdate() == e.getSource()) {
 			//TODO Acción Panel inicial botón Actualizar
@@ -114,7 +132,6 @@ public class Controller implements ActionListener{
 		view.getTextField_direction().setVisible(true);
 		view.getTextField_dni().setVisible(true);
 		view.getTextField_date().setVisible(true);
-
 
 	}
 
