@@ -14,6 +14,14 @@ import javax.swing.SwingConstants;
 public class View extends JFrame {
 
 	private JPanel contentPane;
+	
+	/* Botones*/
+	private JButton btnCreate;
+	private JButton btnUpdate;
+	private JButton btnSelect;
+	private JButton btnDelete;
+
+	private JLabel lblMsg;
 
 	/**
 	 * Launch the application.
@@ -40,26 +48,96 @@ public class View extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnNewButton = new JButton("Crear");
-		btnNewButton.setBounds(145, 123, 118, 23);
-		contentPane.add(btnNewButton);
+		btnCreate = new JButton("Crear");
+		btnCreate.setBounds(145, 123, 118, 23);
+		contentPane.add(btnCreate);
 		
-		JButton btnNewButton_1 = new JButton("Actualizar");
-		btnNewButton_1.setBounds(145, 161, 118, 23);
-		contentPane.add(btnNewButton_1);
+		btnUpdate = new JButton("Actualizar");
+		btnUpdate.setBounds(145, 161, 118, 23);
+		contentPane.add(btnUpdate);
 		
-		JButton btnNewButton_2 = new JButton("Consultar");
-		btnNewButton_2.setBounds(145, 195, 118, 23);
-		contentPane.add(btnNewButton_2);
+		btnSelect = new JButton("Consultar");
+		btnSelect.setBounds(145, 195, 118, 23);
+		contentPane.add(btnSelect);
 		
-		JButton btnNewButton_3 = new JButton("Eliminar");
-		btnNewButton_3.setBounds(145, 229, 118, 23);
-		contentPane.add(btnNewButton_3);
+		btnDelete = new JButton("Eliminar");
+		btnDelete.setBounds(145, 229, 118, 23);
+		contentPane.add(btnDelete);
 		
-		JLabel lblNewLabel = new JLabel("Porfavor, indica lo que deseas hacer:");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel.setBounds(31, 47, 349, 32);
-		contentPane.add(lblNewLabel);
+		lblMsg = new JLabel("Porfavor, indica lo que deseas hacer:");
+		lblMsg.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMsg.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblMsg.setBounds(31, 47, 349, 32);
+		contentPane.add(lblMsg);
+	}
+
+	/**
+	 * @return the btnCreate
+	 */
+	public JButton getBtnCreate() {
+		return btnCreate;
+	}
+
+	/**
+	 * @param btnCreate the btnCreate to set
+	 */
+	public void setBtnCreate(JButton btnCreate) {
+		this.btnCreate = btnCreate;
+	}
+
+	/**
+	 * @return the btnUpdate
+	 */
+	public JButton getBtnUpdate() {
+		return btnUpdate;
+	}
+
+	/**
+	 * @param btnUpdate the btnUpdate to set
+	 */
+	public void setBtnUpdate(JButton btnUpdate) {
+		this.btnUpdate = btnUpdate;
+	}
+
+	/**
+	 * @return the btnSelect
+	 */
+	public JButton getBtnSelect() {
+		return btnSelect;
+	}
+
+	/**
+	 * @param btnSelect the btnSelect to set
+	 */
+	public void setBtnSelect(JButton btnSelect) {
+		this.btnSelect = btnSelect;
+	}
+
+	/**
+	 * @return the btnDelete
+	 */
+	public JButton getBtnDelete() {
+		return btnDelete;
+	}
+
+	/**
+	 * @param btnDelete the btnDelete to set
+	 */
+	public void setBtnDelete(JButton btnDelete) {
+		this.btnDelete = btnDelete;
+	}
+
+	/**
+	 * @return the lblMsg
+	 */
+	public JLabel getLblMsg() {
+		return lblMsg;
+	}
+
+	/**
+	 * @param lblMsg the lblMsg to set
+	 */
+	public void setLblMsg(JLabel lblMsg) {
+		this.lblMsg = lblMsg;
 	}
 }
