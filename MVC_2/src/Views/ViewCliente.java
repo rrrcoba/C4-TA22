@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
-public class View extends JFrame {
+public class ViewCliente extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private JPanel contentPane;
@@ -43,7 +43,7 @@ public class View extends JFrame {
 	/**
 	 *	Creamos el marco.
 	 */
-	public View() {
+	public ViewCliente() {
 		// Panel inicial con sus elementos
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

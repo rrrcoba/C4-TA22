@@ -4,7 +4,7 @@ import javax.swing.JOptionPane;
 
 import Controllers.Controller;
 import Models.Cliente;
-import Views.View;
+import Views.ViewCliente;
 
 public class MainApp {
 	public static void main(String[] args) {
@@ -15,7 +15,7 @@ public class MainApp {
 
 			// Inicializamos modelo y vista
 			Cliente client = new Cliente();
-			View view = new View();
+			ViewCliente view = new ViewCliente();
 			
 			// Creamos controlador con parametros cliente y vista
 			Controller controller = new Controller(client, view);

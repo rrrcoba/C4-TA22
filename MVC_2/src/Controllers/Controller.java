@@ -9,13 +9,13 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import Models.Cliente;
-import Views.View;
+import Views.ViewCliente;
 
 public class Controller implements ActionListener{
 
 	// Variables
 	private Cliente client;
-	private View view;
+	private ViewCliente view;
 
 	private String name;
 	private String surname;
@@ -30,7 +30,7 @@ public class Controller implements ActionListener{
 	 * @param client
 	 * @param view
 	 */
-	public Controller(Cliente client, View view) {
+	public Controller(Cliente client, ViewCliente view) {
 		this.client = client;
 		this.view = view;
 	}
