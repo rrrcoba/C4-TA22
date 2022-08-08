@@ -5,8 +5,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
-import java.util.Date;
 
 import javax.swing.JOptionPane;
 
@@ -14,18 +12,11 @@ public class Cliente {
 
 	// IMPORTANTE
 	// Recordad cambiar estoo
+
 	final static String user = "root";
 	final static String pass = "Oriol92.";
 	final static String url = "jdbc:mysql://192.168.1.58:3306?useTimezone=true&serverTimezone=UTC";
 	final static String db = "ud22ex1";
-	
-	// Variables
-	private int id;
-	private String name;
-	private String surname;
-	private String direction;
-	private int DNI;
-	private String date;
 
 	private Connection c;
 
@@ -121,6 +112,7 @@ public class Cliente {
 			String Querydb = "USE " + db + ";";
 			Statement stdb = c.createStatement();
 			stdb.executeUpdate(Querydb);
+      
 			String Query = "DELETE FROM cliente WHERE ID = " + ID + ";";
 			Statement st = c.createStatement();
 			st.executeUpdate(Query);
@@ -135,72 +127,28 @@ public class Cliente {
 
 	/**
 	 * Actualización de datos registrados
-	 * @param table_name
-	 * @param new_value
-	 * @param field
-	 * @param ID
-	 * @param field_id
+	 * 
+	 * @param id
+	 * @param newName
+	 * @param newSurname
+	 * @param newDirection
+	 * @param newDni
+	 * @param newDate
 	 */
-	public void updateData(String table_name, String new_value, String field, String ID, String field_id) {
-
+	public void updateData(int id, String newName, String newSurname, String newDirection, int newDni, String newDate) {
 		try {
-			String Query = "UPDATE cliente SET " + field + " = \"" + new_value + "\"" + " WHERE " + field_id + " = \"" + ID + "\"";
+			String Querydb = "USE " + db + ";";
+			Statement stdb = c.createStatement();
+			stdb.executeUpdate(Querydb);
+			
+			String Query = "UPDATE cliente SET nombre='" + newName + "', apellido='" + newSurname + "', direccion='"+ newDirection + "', dni=" + newDni + ", fecha='" + newDate + "' WHERE ID=" + id + ";";
 			Statement st = c.createStatement();
 			st.executeUpdate(Query);
+			JOptionPane.showMessageDialog(null, "Actualización realizada con éxito.");
 
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage() + "\n Error en la actualización de datos.", "ERROR", 0);
 			e.printStackTrace();
 		}
-
 	}
-
-	public Connection getConnection() {
-		return c;
-	}
-
-	public void setConnection(Connection c) {
-		this.c = c;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getSurname() {
-		return surname;
-	}
-
-	public void setSurname(String surname) {
-		this.surname = surname;
-	}
-
-	public String getDirection() {
-		return direction;
-	}
-
-	public void setDirection(String direction) {
-		this.direction = direction;
-	}
-
-	public int getDNI() {
-		return DNI;
-	}
-
-	public void setDNI(int dNI) {
-		DNI = dNI;
-	}
-
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
-	}
-
 }
