@@ -1,15 +1,18 @@
 package Models;
 
+import java.sql.SQLException;
 import java.util.Date;
 
-public class Cliente {
+import Controllers.Controller;
 
+public class Cliente {
+	
+	private Controller control = new Controller(); 
 	private String name;
 	private String surname;
 	private String direction;
 	private int DNI;
 	private Date date;
-
 
 	//Metodo para insertar registros a la tabla
 	public void insert(String name, String surname, String direction, int DNI, Date date) {
@@ -23,7 +26,20 @@ public class Cliente {
 
 	//Metodo para imprimir los registros
 	public void select(String db) {
-		
+
+		java.sql.ResultSet resultSet  = conexion.getValues(db, "Cliente");
+
+		try {
+			while(resultSet.next()) {
+				control.showName(resultSet.getString("Nombre"));
+				control.showSurname(resultSet.getString("Apellido"));
+				control.showDirection(resultSet.getString("Dirección"));
+				control.showDni(resultSet.getString("DNI"));
+				control.showDate(resultSet.getString("Fecha"));
+			}
+		} catch (SQLException e) {
+			System.out.println(e);
+		}
 	}
 	
 	
