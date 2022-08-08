@@ -13,8 +13,8 @@ public class Videos {
 	// IMPORTANTE
 	// Recordad cambiar estoo
 
-	final static String user = "root";
-	final static String pass = "Oriol92.";
+	final static String user = "remote";
+	final static String pass = "....";
 	final static String url = "jdbc:mysql://192.168.1.58:3306?useTimezone=true&serverTimezone=UTC";
 	final static String db = "ud22ex1";
 
@@ -55,7 +55,7 @@ public class Videos {
 	 * 
 	 * @throws ClassNotFoundException
 	 */
-	public void insertData(String title, String director, int cli_id) {
+	public void insertData(String title, String director, String cli_id) {
 		try {
 			String Querydb = "USE " + db + ";";
 			Statement stdb = c.createStatement();
@@ -132,13 +132,13 @@ public class Videos {
 	 * @param title
 	 * @param director
 	 */
-	public void updateData(int id, String title, String director) {
+	public void updateData(int id, String title, String director, String cli) {
 		try {
 			String Querydb = "USE " + db + ";";
 			Statement stdb = c.createStatement();
 			stdb.executeUpdate(Querydb);
 
-			String Query = "UPDATE videos SET titulo ='" + title + "', director ='" + director + "' WHERE ID=" + id + ";";
+			String Query = "UPDATE videos SET title ='" + title + "', director ='" + director + "' WHERE ID=" + id + ";";
 			Statement st = c.createStatement();
 			st.executeUpdate(Query);
 			JOptionPane.showMessageDialog(null, "Actualización realizada con éxito.");
@@ -151,4 +151,4 @@ public class Videos {
 }
 
 
-}
+
