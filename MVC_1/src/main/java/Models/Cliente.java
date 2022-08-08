@@ -12,9 +12,10 @@ public class Cliente {
 
 	// IMPORTANTE
 	// Recordad cambiar estoo
-	final static String user = "remote";
-	final static String pass = "abcd1234";
-	final static String url = "jdbc:mysql://192.168.1.31:3306?useTimezone=true&serverTimezone=UTC";
+
+	final static String user = "root";
+	final static String pass = "Oriol92.";
+	final static String url = "jdbc:mysql://192.168.1.58:3306?useTimezone=true&serverTimezone=UTC";
 	final static String db = "ud22ex1";
 
 	private Connection c;
@@ -56,7 +57,7 @@ public class Cliente {
 	 */
 	public void insertData(String name, String surname, String direction, int dni, String date) {
 		try {
-			String Querydb = "USE "+db+";";
+			String Querydb = "USE " + db + ";";
 			Statement stdb = c.createStatement();
 			stdb.executeUpdate(Querydb);
 
@@ -78,9 +79,9 @@ public class Cliente {
 	 * @param table_name
 	 * @return
 	 */
-	public ResultSet getValues(String table_name) {
+	public ResultSet getValues() {
 		try {
-			String Querydb = "USE "+db+";";
+			String Querydb = "USE "+ db + ";";
 			Statement stdb = c.createStatement();
 			stdb.executeUpdate(Querydb);
 
@@ -105,16 +106,17 @@ public class Cliente {
 	 * @param field
 	 * @param ID
 	 */
-	public void deleteRecord(String table_name, String field, String ID) {
+	public void deleteRecord(String ID) {
 
 		try {
 			String Querydb = "USE " + db + ";";
 			Statement stdb = c.createStatement();
 			stdb.executeUpdate(Querydb);
-			
-			String Query = "DELETE FROM cliente WHERE " + field + " = \"" + ID + "\"";
+      
+			String Query = "DELETE FROM cliente WHERE ID = " + ID + ";";
 			Statement st = c.createStatement();
 			st.executeUpdate(Query);
+			JOptionPane.showMessageDialog(null, "Datos eliminados correctamente.");
 
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage() + "\n Error en la eliminación de datos.", "ERROR", 0);
