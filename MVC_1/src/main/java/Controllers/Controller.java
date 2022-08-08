@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import Models.Cliente;
 import Views.View;
@@ -61,32 +62,45 @@ public class Controller implements ActionListener{
 		if (view.getBtnCreate() == e.getSource()) {
 			initializeForm();
 			view.getLabelTitle().setText("Crear Datos");			
-			// Pruebas de conexión
-			//connectionTest();
 
 		} else if (view.getBtnSelect() == e.getSource()) {
 			//TODO Acción Panel inicial botón Seleccionar
 
 		} else if (view.getBtnUpdate() == e.getSource()) {
-			//TODO Acción Panel inicial botón Actualizar
 			initializeForm();
 			view.getLabelTitle().setText("Actualizar Datos");
 
 		} else if (view.getBtnDelete() == e.getSource()) {
 			//TODO Acción Panel inicial botón Eliminar
 
-		} 
-		else if (view.getBtnSend() == e.getSource()) {
-			//TODO Acción Panel formulario botón Enviar
-			this.name = view.getTextField_name().getText();
-			this.surname = view.getTextField_surname().getText();
-			this.direction = view.getTextField_direction().getText();
-			this.dni = Integer.parseInt(view.getTextField_dni().getText());
-			this.date = view.getTextField_date().getText();
+		} else if (view.getBtnSend() == e.getSource()) {
+			if(view.getLabelTitle().getText().compareTo("Actualizar Datos") == 0) {
+				int id = Integer.parseInt(JOptionPane.showInputDialog("¿Cuál es el ID del registro que quieres cambiar?"));
+				
+				this.name = view.getTextField_name().getText();
+				this.surname = view.getTextField_surname().getText();
+				this.direction = view.getTextField_direction().getText();
+				this.dni = Integer.parseInt(view.getTextField_dni().getText());
+				this.date = view.getTextField_date().getText();
+				
+				client.openConnection();
+				client.updateData(id, name, surname, direction, dni, date);
+				client.closeConnection();
+				
+			} else {
+				this.name = view.getTextField_name().getText();
+				this.surname = view.getTextField_surname().getText();
+				this.direction = view.getTextField_direction().getText();
+				this.dni = Integer.parseInt(view.getTextField_dni().getText());
+				this.date = view.getTextField_date().getText();
 
-			client.openConnection();
-			client.insertData(this.name, this.surname, this.direction, this.dni, this.date );
-			client.closeConnection();
+				client.openConnection();
+				client.insertData(this.name, this.surname, this.direction, this.dni, this.date);
+				client.closeConnection();
+			}
+			
+			// Volvemos al panel inicial
+			initializeFirstPanel();
 		}	
 	}
 
@@ -114,8 +128,30 @@ public class Controller implements ActionListener{
 		view.getTextField_direction().setVisible(true);
 		view.getTextField_dni().setVisible(true);
 		view.getTextField_date().setVisible(true);
+	}
+	
+	/**
+	 * Método que oculta los elementos del formulario y hace visibles los iniciales
+	 */
+	public void initializeFirstPanel () {
+		view.getBtnCreate().setVisible(true);
+		view.getBtnSelect().setVisible(true);
+		view.getBtnUpdate().setVisible(true);
+		view.getBtnDelete().setVisible(true);
+		view.getLblMsg().setVisible(true);
 
-
+		view.getLabelTitle().setVisible(false);
+		view.getLabelName().setVisible(false);
+		view.getSurname().setVisible(false);
+		view.getDirection().setVisible(false);
+		view.getDni().setVisible(false);
+		view.getDate().setVisible(false);
+		view.getBtnSend().setVisible(false);
+		view.getTextField_name().setVisible(false);
+		view.getTextField_surname().setVisible(false);
+		view.getTextField_direction().setVisible(false);
+		view.getTextField_dni().setVisible(false);
+		view.getTextField_date().setVisible(false);
 	}
 
 

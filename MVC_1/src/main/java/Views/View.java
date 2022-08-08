@@ -1,8 +1,5 @@
 package Views;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -13,6 +10,7 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 
 public class View extends JFrame {
+	private static final long serialVersionUID = 1L;
 
 	private JPanel contentPane;
 	
@@ -78,7 +76,6 @@ public class View extends JFrame {
 		
 		
 		/* Formulario sin contentPaneForm */
-		//TODO poner campos fecha
 		textField_name = new JTextField();
 		textField_name.setVisible(false);
 		textField_name.setColumns(10);
@@ -152,8 +149,6 @@ public class View extends JFrame {
 		contentPane.add(date);
 		
 		
-
-			
 		
 //		/* ContentPaneForm and buttons */
 //		JPanel contentPaneForm = new JPanel();
@@ -181,6 +176,12 @@ public class View extends JFrame {
 //		textField_dni.setColumns(10);
 //		textField_dni.setBounds(112, 150, 135, 20);
 //		contentPaneForm.add(textField_dni);
+//		
+//		textField_date = new JTextField();
+//		textField_date.setVisible(false);
+//		textField_date.setColumns(10);
+//		textField_date.setBounds(112, 181, 135, 20);
+//		contentPaneForm.add(textField_date);
 //		
 //		btnSend = new JButton("Enviar");
 //		btnSend.setBounds(122, 181, 89, 23);
@@ -211,6 +212,12 @@ public class View extends JFrame {
 //		dni.setFont(new Font("Tahoma", Font.PLAIN, 14));
 //		dni.setBounds(46, 147, 61, 23);
 //		contentPaneForm.add(dni);
+//
+//		date = new JLabel("Fecha:");
+//		date.setVisible(false);
+//		date.setFont(new Font("Tahoma", Font.PLAIN, 14));
+//		date.setBounds(46, 180, 61, 23);
+//		contentPaneForm.add(date);
 	}
 
 	/**
