@@ -49,68 +49,59 @@ public class Controller implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (view.getBtnCreate() == e.getSource()) {
-			//TODO acción del botón create
+			initializeForm();
 			
-//			view.getContentPaneForm().setVisible(true);
-//			view.getContentPane().setVisible(false);
+			
+			// Pruebas de conexión
+			//connectionTest();
+			
 		} else if (view.getBtnSelect() == e.getSource()) {
-			//TODO
+			//TODO Acción Panel inicial botón Seleccionar
+			
 		} else if (view.getBtnUpdate() == e.getSource()) {
-			//TODO
+			//TODO Acción Panel inicial botón Actualizar
+			
 		} else if (view.getBtnDelete() == e.getSource()) {
-			//TODO
-		}
+			//TODO Acción Panel inicial botón Eliminar
+			
+		} else if (view.getBtnSend() == e.getSource()) {
+			//TODO Acción Panel formulario botón Enviar
+		}	
+	}
+	
+	
+	/**
+	 * Método que oculta los elementos del panel inicial y hace visibles los del panel de formulario
+	 */
+	public void initializeForm () {
+		//TODO
+		view.getBtnCreate().setVisible(false);
+		view.getBtnSelect().setVisible(false);
+		view.getBtnUpdate().setVisible(false);
+		view.getBtnDelete().setVisible(false);
+		view.getLblMsg().setVisible(false);
 		
-		System.out.println("Accion del botón OK");
+		view.getLabelTitle().setVisible(true);
+		view.getLabelName().setVisible(true);
+		view.getSurname().setVisible(true);
+		view.getDirection().setVisible(true);
+		view.getDni().setVisible(true);
+		view.getBtnSend().setVisible(true);
+		view.getTextField_name().setVisible(true);
+		view.getTextField_surname().setVisible(true);
+		view.getTextField_direction().setVisible(true);
+		view.getTextField_dni().setVisible(true);
+		
 		
 	}
 	
-	public void initializeContentPaneForm () {
-		
-	}
 	
 	/**
-	 * Transmite el nombre hacia la vista
-	 * 
-	 * @param name
+	 * Método para probar la conexión con el MySQL del Fedora
 	 */
-	public void showName(String name) {
-		
-	}
-
-	/**
-	 * Transmite el apellido hacia la vista
-	 * 
-	 * @param surname
-	 */
-	public void showSurname(String surname) {
-		
-	}
-	
-	/**
-	 * Transmite la dirección hacia la vista
-	 * 
-	 * @param direction
-	 */
-	public void showDirection(String direction) {
-		
-	}
-	
-	/**
-	 * Transmite el dni hacia la vista
-	 * 
-	 * @param dni
-	 */
-	public void showDni(int dni) {
-		
-	}
-	
-	/**
-	 * Transmite la fecha hacia la vista
-	 * 
-	 * @param date
-	 */
-	public void showDate(Date date) {
-		
+	public void connectionTest() {
+		client.openConnection();
+		client.closeConnection();
+		System.out.println("Conexión y desconexión OK");
 	}
 }
