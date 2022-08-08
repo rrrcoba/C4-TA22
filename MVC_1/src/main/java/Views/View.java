@@ -69,13 +69,6 @@ public class View extends JFrame {
 		btnDelete = new JButton("Eliminar");
 		btnDelete.setBounds(145, 229, 118, 23);
 		contentPane.add(btnDelete);
-    
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 455, 294);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
 		
 		JLabel name = new JLabel("Nombre: ");
 		name.setVisible(false);
