@@ -1,4 +1,4 @@
-package Models;
+package main.java.Models;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,8 +14,8 @@ public class Videos {
 	// Recordad cambiar estoo
 
 	final static String user = "remote";
-	final static String pass = "abcd1234";
-	final static String url = "jdbc:mysql://192.168.1.31:3306?useTimezone=true&serverTimezone=UTC";
+	final static String pass = "asdf852456.";
+	final static String url = "jdbc:mysql://192.168.1.91:3306?useTimezone=true&serverTimezone=UTC";
 	final static String db = "ud22ex1";
 
 	private Connection c;
@@ -138,7 +138,7 @@ public class Videos {
 			Statement stdb = c.createStatement();
 			stdb.executeUpdate(Querydb);
 
-			String Query = "UPDATE videos SET titulo ='" + title + "', director ='" + director + "' WHERE ID=" + id + ";";
+			String Query = "UPDATE videos SET title ='" + title + "', director ='" + director + "' WHERE ID=" + id + ";";
 			Statement st = c.createStatement();
 			st.executeUpdate(Query);
 			JOptionPane.showMessageDialog(null, "Actualización realizada con éxito.");

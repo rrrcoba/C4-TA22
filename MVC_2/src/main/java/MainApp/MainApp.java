@@ -1,13 +1,13 @@
-package MainApp;
+package main.java.MainApp;
 
 import javax.swing.JOptionPane;
 
-import Controllers.Controller;
-import Controllers.ControllerVideos;
-import Models.Cliente;
-import Models.Videos;
-import Views.View;
-import Views.ViewVideo;
+import main.java.Controllers.Controller;
+import main.java.Controllers.ControllerVideos;
+import main.java.Models.Cliente;
+import main.java.Models.Videos;
+import main.java.Views.View;
+import main.java.Views.ViewV;
 
 public class MainApp {
 	public static void main(String[] args) {
@@ -32,7 +32,7 @@ public class MainApp {
 			} else {
 				// Inicializamos modelo y vista
 				Videos videos = new Videos();
-				ViewVideo viewVideo = new ViewVideo();
+				ViewV viewVideo = new ViewV();
 
 				
 				// Creamos controlador con parametros cliente y vista
