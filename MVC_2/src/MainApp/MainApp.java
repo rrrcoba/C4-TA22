@@ -16,6 +16,7 @@ public class MainApp {
 			// Inicializamos modelo y vista
 			Cliente client = new Cliente();
 			ViewCliente view = new ViewCliente();
+
 			
 			// Creamos controlador con parametros cliente y vista
 			Controller controller = new Controller(client, view);
