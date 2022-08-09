@@ -111,4 +111,86 @@ public class ViewScientific extends JFrame {
 		btnSend.setBounds(155, 212, 89, 23);
 		contentPane.add(btnSend);
 	}
+
+	public JButton getBtnCreate() {
+		return btnCreate;
+	}
+
+	public void setBtnCreate(JButton btnCreate) {
+		this.btnCreate = btnCreate;
+	}
+
+	public JButton getBtnUpdate() {
+		return btnUpdate;
+	}
+
+	public void setBtnUpdate(JButton btnUpdate) {
+		this.btnUpdate = btnUpdate;
+	}
+
+	public JButton getBtnSelect() {
+		return btnSelect;
+	}
+
+	public void setBtnSelect(JButton btnSelect) {
+		this.btnSelect = btnSelect;
+	}
+
+	public JButton getBtnDelete() {
+		return btnDelete;
+	}
+
+	public void setBtnDelete(JButton btnDelete) {
+		this.btnDelete = btnDelete;
+	}
+
+	public JLabel getLblMsg() {
+		return lblMsg;
+	}
+
+	public void setLblMsg(JLabel lblMsg) {
+		this.lblMsg = lblMsg;
+	}
+
+	public JTextField getTextField_dni() {
+		return textField_dni;
+	}
+
+	public void setTextField_dni(JTextField textField_dni) {
+		this.textField_dni = textField_dni;
+	}
+
+	public JTextField getTextField_NameSurnames() {
+		return textField_NameSurnames;
+	}
+
+	public void setTextField_NameSurnames(JTextField textField_NameSurnames) {
+		this.textField_NameSurnames = textField_NameSurnames;
+	}
+
+	public JLabel getLbl_NameSurnames() {
+		return lbl_NameSurnames;
+	}
+
+	public void setLbl_NameSurnames(JLabel lbl_NameSurnames) {
+		this.lbl_NameSurnames = lbl_NameSurnames;
+	}
+
+	public JLabel getLbl_dni() {
+		return lbl_dni;
+	}
+
+	public void setLbl_dni(JLabel lbl_dni) {
+		this.lbl_dni = lbl_dni;
+	}
+
+	public JButton getBtnSend() {
+		return btnSend;
+	}
+
+	public void setBtnSend(JButton btnSend) {
+		this.btnSend = btnSend;
+	}
+	
+	
 }

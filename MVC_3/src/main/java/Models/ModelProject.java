@@ -55,14 +55,13 @@ public class ModelProject {
 	 *
 	 * @throws ClassNotFoundException
 	 */
-	public void insertData(String ID, String name, int hours) {
+	public void insertData(String name, String hours) {
 		try {
 			String Querydb = "USE " + db + ";";
 			Statement stdb = c.createStatement();
 			stdb.executeUpdate(Querydb);
 
-			String Query = "INSERT INTO Proyectos (ID, Nombre, Horas) values('" + ID + "', '"
-					+ name + "', '" + hours + "');";
+			String Query = "INSERT INTO Proyectos (Nombre, Horas) values('"	+ name + "', '" + hours + "');";
 			Statement st = c.createStatement();
 			st.executeUpdate(Query);
 			JOptionPane.showMessageDialog(null, "Datos almacenados correctamente.");
@@ -132,7 +131,7 @@ public class ModelProject {
 	 * @param newName
 	 * @param newHours
 	 */
-	public void updateData(int ID, String newName, int newHours) {
+	public void updateData(int ID, String newName, String newHours) {
 		try {
 			String Querydb = "USE " + db + ";";
 			Statement stdb = c.createStatement();

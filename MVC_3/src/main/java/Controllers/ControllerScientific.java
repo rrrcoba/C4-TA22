@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import Models.ModelScientific;
@@ -53,7 +54,7 @@ public class ControllerScientific implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			if (view.getBtnCreate() == e.getSource()) {
 				initializeForm();
-				view.getLabelTitle().setText("Crear Datos");			
+				view.getLblMsg().setText("Crear Datos");			
 
 			} else if (view.getBtnSelect() == e.getSource()) {
 				//TODO Acción Panel inicial botón Seleccionar
@@ -75,21 +76,21 @@ public class ControllerScientific implements ActionListener{
 
 			} else if (view.getBtnUpdate() == e.getSource()) {
 				initializeForm();
-				view.getLabelTitle().setText("Actualizar Datos");
+				view.getLblMsg().setText("Actualizar Datos");
 
 			} else if (view.getBtnDelete() == e.getSource()) {
 				//TODO Acción Panel inicial botón Eliminar
-				String id = JOptionPane.showInputDialog("Indica la ID del registro que quieres eliminar.");
+				String id = JOptionPane.showInputDialog("Indica el DNI del registro que quieres eliminar.");
 				cientifico.openConnection();
 				cientifico.deleteRecord(id);
 				cientifico.closeConnection();
 
 			} else if (view.getBtnSend() == e.getSource()) {
-				if(view.getLabelTitle().getText().compareTo("Actualizar Datos") == 0) {
-					int id = Integer.parseInt(JOptionPane.showInputDialog("¿Cuál es el ID del registro que quieres cambiar?"));
+				if(view.getLblMsg().getText().compareTo("Actualizar Datos") == 0) {
+					int id = Integer.parseInt(JOptionPane.showInputDialog("¿Cuál es el DNI del registro que quieres cambiar?"));
 					
 					this.dni = view.getTextField_dni().getText();
-					this.nomApels = view.getTextField_nomApels().getText();
+					this.nomApels = view.getTextField_NameSurnames().getText();
 					
 					cientifico.openConnection();
 					cientifico.updateData(dni, nomApels);
@@ -97,7 +98,7 @@ public class ControllerScientific implements ActionListener{
 					
 				} else {
 					this.dni = view.getTextField_dni().getText();
-					this.nomApels = view.getTextField_nomApels().getText();
+					this.nomApels = view.getTextField_NameSurnames().getText();
 
 					cientifico.openConnection();
 					cientifico.insertData(this.dni, this.nomApels);
@@ -119,14 +120,13 @@ public class ControllerScientific implements ActionListener{
 			view.getBtnSelect().setVisible(false);
 			view.getBtnUpdate().setVisible(false);
 			view.getBtnDelete().setVisible(false);
-			view.getLblMsg().setVisible(false);
 
-			view.getLabelTitle().setVisible(true);
-			view.getLabelName().setVisible(true);
-			view.getSurname().setVisible(true);
+
+			view.getLbl_dni().setVisible(true);
+			view.getLbl_NameSurnames().setVisible(true);
 			view.getBtnSend().setVisible(true);
-			view.getTextField_name().setVisible(true);
-			view.getTextField_surname().setVisible(true);
+			view.getTextField_NameSurnames().setVisible(true);
+			view.getTextField_dni().setVisible(true);
 		}
 		
 		/**
@@ -137,14 +137,13 @@ public class ControllerScientific implements ActionListener{
 			view.getBtnSelect().setVisible(true);
 			view.getBtnUpdate().setVisible(true);
 			view.getBtnDelete().setVisible(true);
-			view.getLblMsg().setVisible(true);
 
-			view.getLabelTitle().setVisible(false);
-			view.getLabelName().setVisible(false);
-			view.getSurname().setVisible(false);
+			view.getLblMsg().setText("Porfavor, indica lo que deseas hacer:");
+			view.getLbl_dni().setVisible(false);
+			view.getLbl_NameSurnames().setVisible(false);
 			view.getBtnSend().setVisible(false);
-			view.getTextField_name().setVisible(false);
-			view.getTextField_surname().setVisible(false);
+			view.getTextField_NameSurnames().setVisible(false);
+			view.getTextField_dni().setVisible(false);
 		}
 
 

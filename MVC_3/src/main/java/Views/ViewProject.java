@@ -110,4 +110,86 @@ public class ViewProject extends JFrame {
 		btnSend.setBounds(122, 211, 89, 23);
 		contentPane.add(btnSend);
 	}
+
+	public JButton getBtnCreate() {
+		return btnCreate;
+	}
+
+	public void setBtnCreate(JButton btnCreate) {
+		this.btnCreate = btnCreate;
+	}
+
+	public JButton getBtnUpdate() {
+		return btnUpdate;
+	}
+
+	public void setBtnUpdate(JButton btnUpdate) {
+		this.btnUpdate = btnUpdate;
+	}
+
+	public JButton getBtnSelect() {
+		return btnSelect;
+	}
+
+	public void setBtnSelect(JButton btnSelect) {
+		this.btnSelect = btnSelect;
+	}
+
+	public JButton getBtnDelete() {
+		return btnDelete;
+	}
+
+	public void setBtnDelete(JButton btnDelete) {
+		this.btnDelete = btnDelete;
+	}
+
+	public JLabel getLblMsg() {
+		return lblMsg;
+	}
+
+	public void setLblMsg(JLabel lblMsg) {
+		this.lblMsg = lblMsg;
+	}
+
+	public JTextField getTextField_name() {
+		return textField_name;
+	}
+
+	public void setTextField_name(JTextField textField_name) {
+		this.textField_name = textField_name;
+	}
+
+	public JTextField getTextField_hours() {
+		return textField_hours;
+	}
+
+	public void setTextField_hours(JTextField textField_hours) {
+		this.textField_hours = textField_hours;
+	}
+
+	public JButton getBtnSend() {
+		return btnSend;
+	}
+
+	public void setBtnSend(JButton btnSend) {
+		this.btnSend = btnSend;
+	}
+
+	public JLabel getLbl_name() {
+		return lbl_name;
+	}
+
+	public void setLbl_name(JLabel lbl_name) {
+		this.lbl_name = lbl_name;
+	}
+
+	public JLabel getLbl_hours() {
+		return lbl_hours;
+	}
+
+	public void setLbl_hours(JLabel lbl_hours) {
+		this.lbl_hours = lbl_hours;
+	}
+	
+	
 }

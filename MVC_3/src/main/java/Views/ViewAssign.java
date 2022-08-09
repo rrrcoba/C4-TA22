@@ -62,4 +62,46 @@ public class ViewAssign extends JFrame{
 		lblMsg.setBounds(31, 47, 349, 32);
 		contentPane.add(lblMsg);
 	}
+
+	public JButton getBtnCreate() {
+		return btnCreate;
+	}
+
+	public void setBtnCreate(JButton btnCreate) {
+		this.btnCreate = btnCreate;
+	}
+
+	public JButton getBtnUpdate() {
+		return btnUpdate;
+	}
+
+	public void setBtnUpdate(JButton btnUpdate) {
+		this.btnUpdate = btnUpdate;
+	}
+
+	public JButton getBtnSelect() {
+		return btnSelect;
+	}
+
+	public void setBtnSelect(JButton btnSelect) {
+		this.btnSelect = btnSelect;
+	}
+
+	public JButton getBtnDelete() {
+		return btnDelete;
+	}
+
+	public void setBtnDelete(JButton btnDelete) {
+		this.btnDelete = btnDelete;
+	}
+
+	public JLabel getLblMsg() {
+		return lblMsg;
+	}
+
+	public void setLblMsg(JLabel lblMsg) {
+		this.lblMsg = lblMsg;
+	}
+	
+	
 }
