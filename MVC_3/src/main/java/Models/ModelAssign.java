@@ -14,8 +14,8 @@ public class ModelAssign {
 	// Recordad cambiar estoo
 
 	final static String user = "remote";
-	final static String pass = "....";
-	final static String url = "jdbc:mysql://192.168.1.58:3306?useTimezone=true&serverTimezone=UTC";
+	final static String pass = "abcd1234";
+	final static String url = "jdbc:mysql://192.168.1.31:3306?useTimezone=true&serverTimezone=UTC";
 	final static String db = "ud22ex3";
 
 	private Connection c;
@@ -105,14 +105,14 @@ public class ModelAssign {
 	 * @param field
 	 * @param ID
 	 */
-	public void deleteRecord(String DNI) {
+	public void deleteRecord(String id) {
 
 		try {
 			String Querydb = "USE " + db + ";";
 			Statement stdb = c.createStatement();
 			stdb.executeUpdate(Querydb);
 
-			String Query = "DELETE FROM Asignado_A WHERE Cientifico = " + DNI + ";";
+			String Query = "DELETE FROM Asignado_A WHERE Proyecto = " + id + ";";
 			Statement st = c.createStatement();
 			st.executeUpdate(Query);
 			JOptionPane.showMessageDialog(null, "Datos eliminados correctamente.");
@@ -122,30 +122,6 @@ public class ModelAssign {
 			e.printStackTrace();
 		}
 
-	}
-
-	/**
-	 * Actualización de datos registrados
-	 * 
-	 * @param DNI
-	 * @param newDNI
-	 * @param newID
-	 */
-	public void updateData(String DNI, String newDNI, String newID) {
-		try {
-			String Querydb = "USE " + db + ";";
-			Statement stdb = c.createStatement();
-			stdb.executeUpdate(Querydb);
-
-			String Query = "UPDATE Asignado_A SET Cientifico='" + newDNI + "', Proyecto='" + newID + "' WHERE ID=" + DNI + ";";
-			Statement st = c.createStatement();
-			st.executeUpdate(Query);
-			JOptionPane.showMessageDialog(null, "Actualización realizada con éxito.");
-
-		} catch (SQLException e) {
-			JOptionPane.showMessageDialog(null, e.getMessage() + "\n Error en la actualización de datos.", "ERROR", 0);
-			e.printStackTrace();
-		}
 	}
 }
 

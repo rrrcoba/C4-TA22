@@ -66,7 +66,7 @@ public class ControllerScientific implements ActionListener{
 				try {
 					while(r.next()) {
 						System.out.println("DNI: " + r.getString("DNI"));
-						System.out.println("NomApels: " + r.getString("NomApels"));
+						System.out.println("Nombre y apellidos: " + r.getString("Nombre_Apellidos"));
 					}
 				} catch (SQLException ex) {
 					System.out.println(ex);
@@ -75,7 +75,15 @@ public class ControllerScientific implements ActionListener{
 				cientifico.closeConnection();
 
 			} else if (view.getBtnUpdate() == e.getSource()) {
-				initializeForm();
+				view.getBtnCreate().setVisible(false);
+				view.getBtnSelect().setVisible(false);
+				view.getBtnUpdate().setVisible(false);
+				view.getBtnDelete().setVisible(false);
+
+				view.getLbl_NameSurnames().setVisible(true);
+				view.getBtnSend().setVisible(true);
+				view.getTextField_NameSurnames().setVisible(true);
+				
 				view.getLblMsg().setText("Actualizar Datos");
 
 			} else if (view.getBtnDelete() == e.getSource()) {
@@ -87,7 +95,7 @@ public class ControllerScientific implements ActionListener{
 
 			} else if (view.getBtnSend() == e.getSource()) {
 				if(view.getLblMsg().getText().compareTo("Actualizar Datos") == 0) {
-					int id = Integer.parseInt(JOptionPane.showInputDialog("¿Cuál es el DNI del registro que quieres cambiar?"));
+					String dni = JOptionPane.showInputDialog("¿Cuál es el DNI del registro que quieres cambiar?");
 					
 					this.dni = view.getTextField_dni().getText();
 					this.nomApels = view.getTextField_NameSurnames().getText();

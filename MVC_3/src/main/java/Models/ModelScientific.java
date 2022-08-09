@@ -14,8 +14,8 @@ public class ModelScientific {
 	// Recordad cambiar estoo
 
 	final static String user = "remote";
-	final static String pass = ".....";
-	final static String url = "jdbc:mysql://192.168.1.58:3306?useTimezone=true&serverTimezone=UTC";
+	final static String pass = "abcd1234";
+	final static String url = "jdbc:mysql://192.168.1.31:3306?useTimezone=true&serverTimezone=UTC";
 	final static String db = "ud22ex3";
 
 	private Connection c;
@@ -137,7 +137,7 @@ public class ModelScientific {
 			Statement stdb = c.createStatement();
 			stdb.executeUpdate(Querydb);
 
-			String Query = "UPDATE Cientificos SET Nombre_Apellidos='" + newName_surname + "' WHERE ID=" + DNI + ";";
+			String Query = "UPDATE Cientificos SET Nombre_Apellidos='" + newName_surname + "' WHERE DNI=" + DNI + ";";
 			Statement st = c.createStatement();
 			st.executeUpdate(Query);
 			JOptionPane.showMessageDialog(null, "Actualización realizada con éxito.");

@@ -19,7 +19,10 @@ public class MainApp  {
 			// Cargamos el driver
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
+			System.out.println("Driver OK.");
+			
 			int option = Integer.parseInt(JOptionPane.showInputDialog("Elige con que tabla quieres trabajar. 1 para cientificos, 2 para proyectos y 3 para asignar a"));
+			
 			
 			if (option == 1) {
 				// Inicializamos modelo y vista

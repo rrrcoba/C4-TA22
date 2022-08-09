@@ -17,7 +17,6 @@ public class ViewAssign extends JFrame{
 
 	/* Elementos del panel inicial*/
 	private JButton btnCreate;
-	private JButton btnUpdate;
 	private JButton btnSelect;
 	private JButton btnDelete;
 
@@ -53,18 +52,13 @@ public class ViewAssign extends JFrame{
 		btnCreate.setVisible(true);
 		contentPane.add(btnCreate);
 		
-		btnUpdate = new JButton("Actualizar");
-		btnUpdate.setBounds(145, 161, 118, 23);
-		btnUpdate.setVisible(true);
-		contentPane.add(btnUpdate);
-		
 		btnSelect = new JButton("Consultar");
-		btnSelect.setBounds(145, 195, 118, 23);
+		btnSelect.setBounds(145, 170, 118, 23);
 		btnSelect.setVisible(true);
 		contentPane.add(btnSelect);
 		
 		btnDelete = new JButton("Eliminar");
-		btnDelete.setBounds(145, 229, 118, 23);
+		btnDelete.setBounds(145, 211, 118, 23);
 		btnDelete.setVisible(true);
 		contentPane.add(btnDelete);
 		
@@ -118,14 +112,6 @@ public class ViewAssign extends JFrame{
 
 	public void setBtnCreate(JButton btnCreate) {
 		this.btnCreate = btnCreate;
-	}
-
-	public JButton getBtnUpdate() {
-		return btnUpdate;
-	}
-
-	public void setBtnUpdate(JButton btnUpdate) {
-		this.btnUpdate = btnUpdate;
 	}
 
 	public JButton getBtnSelect() {
