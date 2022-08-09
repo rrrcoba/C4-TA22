@@ -7,25 +7,27 @@ import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
-import Models.ModelScientific;
-import Views.ViewScientific;
+import Models.ModelProject;
+import Views.ViewProject;
 
-public class ControllerScientific implements ActionListener{
+public class ControllerProject implements ActionListener{
 
 	// Variables
-		private ModelScientific cientifico;
-		private ViewScientific view;
+		private ModelProject project;
+		private ViewProject view;
 
-		private String dni;
-		private String nomApels;
+		private String id;
+		private String name;
+		private String hours;
 
 		/**
+		 * Constructor de controller
 		 * 
-		 * @param cientifico
+		 * @param client
 		 * @param view
 		 */
-		public ControllerScientific(ModelScientific cientifico, ViewScientific view) {
-			this.cientifico = cientifico;
+		public ControllerProject(ModelProject project, ViewProject view) {
+			this.project = project;
 			this.view = view;
 		}
 
@@ -33,7 +35,7 @@ public class ControllerScientific implements ActionListener{
 		 * Inicializa la vista
 		 */
 		public void startView() {
-			view.setTitle("Cientifico");
+			view.setTitle("Proyecto");
 			view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			view.setVisible(true);
 			view.setBounds(100, 100, 437, 347);
@@ -59,19 +61,20 @@ public class ControllerScientific implements ActionListener{
 				//TODO Acción Panel inicial botón Seleccionar
 				
 				ResultSet r = null;
-				cientifico.openConnection();
-				r = cientifico.getValues();
+				project.openConnection();
+				r = project.getValues();
 				
 				try {
 					while(r.next()) {
-						System.out.println("DNI: " + r.getString("DNI"));
-						System.out.println("NomApels: " + r.getString("NomApels"));
+						System.out.println("Id: " + r.getString("Id"));
+						System.out.println("Nombre: " + r.getString("Nombre"));
+						System.out.println("Horas: " + r.getString("Horas"));
 					}
 				} catch (SQLException ex) {
 					System.out.println(ex);
 				}
 
-				cientifico.closeConnection();
+				project.closeConnection();
 
 			} else if (view.getBtnUpdate() == e.getSource()) {
 				initializeForm();
@@ -80,28 +83,28 @@ public class ControllerScientific implements ActionListener{
 			} else if (view.getBtnDelete() == e.getSource()) {
 				//TODO Acción Panel inicial botón Eliminar
 				String id = JOptionPane.showInputDialog("Indica la ID del registro que quieres eliminar.");
-				cientifico.openConnection();
-				cientifico.deleteRecord(id);
-				cientifico.closeConnection();
+				project.openConnection();
+				project.deleteRecord(id);
+				project.closeConnection();
 
 			} else if (view.getBtnSend() == e.getSource()) {
 				if(view.getLabelTitle().getText().compareTo("Actualizar Datos") == 0) {
 					int id = Integer.parseInt(JOptionPane.showInputDialog("¿Cuál es el ID del registro que quieres cambiar?"));
 					
-					this.dni = view.getTextField_dni().getText();
-					this.nomApels = view.getTextField_nomApels().getText();
+					this.name = view.getTextField_name().getText();
+					this.hours = view.getTextField_hours().getText();
 					
-					cientifico.openConnection();
-					cientifico.updateData(dni, nomApels);
-					cientifico.closeConnection();
+					project.openConnection();
+					project.updateData(name, hours);
+					project.closeConnection();
 					
 				} else {
-					this.dni = view.getTextField_dni().getText();
-					this.nomApels = view.getTextField_nomApels().getText();
+					this.name = view.getTextField_name().getText();
+					this.hours = view.getTextField_hours().getText();
 
-					cientifico.openConnection();
-					cientifico.insertData(this.dni, this.nomApels);
-					cientifico.closeConnection();
+					project.openConnection();
+					project.insertData(this.name, this.hours);
+					project.closeConnection();
 				}
 				
 				// Volvemos al panel inicial
@@ -123,10 +126,12 @@ public class ControllerScientific implements ActionListener{
 
 			view.getLabelTitle().setVisible(true);
 			view.getLabelName().setVisible(true);
-			view.getSurname().setVisible(true);
+			view.getHours().setVisible(true);
+			view.getID().setVisible(true);
 			view.getBtnSend().setVisible(true);
 			view.getTextField_name().setVisible(true);
-			view.getTextField_surname().setVisible(true);
+			view.getTextField_hours().setVisible(true);
+			view.getTextField_id().setVisible(true);
 		}
 		
 		/**
@@ -141,10 +146,12 @@ public class ControllerScientific implements ActionListener{
 
 			view.getLabelTitle().setVisible(false);
 			view.getLabelName().setVisible(false);
-			view.getSurname().setVisible(false);
+			view.getHours().setVisible(false);
+			view.getID().setVisible(false);
 			view.getBtnSend().setVisible(false);
 			view.getTextField_name().setVisible(false);
-			view.getTextField_surname().setVisible(false);
+			view.getTextField_Hours().setVisible(false);
+			view.getTextField_ID().setVisible(false);
 		}
 
 
@@ -152,8 +159,8 @@ public class ControllerScientific implements ActionListener{
 		 * Método para probar la conexión con el MySQL del Fedora
 		 */
 		public void connectionTest() {
-			cientifico.openConnection();
-			cientifico.closeConnection();
+			project.openConnection();
+			project.closeConnection();
 			System.out.println("Conexión y desconexión OK");
 		}
 }
