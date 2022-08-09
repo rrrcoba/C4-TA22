@@ -1,4 +1,4 @@
-package main.java.Models;
+package Models;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,9 +13,9 @@ public class Cliente {
 	// IMPORTANTE
 	// Recordad cambiar estoo
 
-	final static String user = "remote";
-	final static String pass = "asdf852456.";
-	final static String url = "jdbc:mysql://192.168.1.91:3306?useTimezone=true&serverTimezone=UTC";
+	final static String user = "root";
+	final static String pass = "Oriol92.";
+	final static String url = "jdbc:mysql://192.168.1.58:3306?useTimezone=true&serverTimezone=UTC";
 	final static String db = "ud22ex1";
 
 	private Connection c;

@@ -8,15 +8,15 @@ import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 
-public class Videos {
+public class ModelProject {
 
 	// IMPORTANTE
 	// Recordad cambiar estoo
 
 	final static String user = "remote";
-	final static String pass = "....";
-	final static String url = "jdbc:mysql://192.168.1.58:3306?useTimezone=true&serverTimezone=UTC";
-	final static String db = "ud22ex1";
+	final static String pass = "abcd1234";
+	final static String url = "jdbc:mysql://192.168.1.31:3306?useTimezone=true&serverTimezone=UTC";
+	final static String db = "ud22ex3";
 
 	private Connection c;
 
@@ -25,7 +25,7 @@ public class Videos {
 	 */
 	public void openConnection() {
 		try {
-			c = DriverManager.getConnection(url,user,pass);
+			c = DriverManager.getConnection(url, user, pass);
 
 			System.out.println("Connected.");
 
@@ -52,17 +52,16 @@ public class Videos {
 
 	/**
 	 * Insertamos registros
-	 * 
+	 *
 	 * @throws ClassNotFoundException
 	 */
-	public void insertData(String title, String director, String cli_id) {
+	public void insertData(String name, String hours) {
 		try {
 			String Querydb = "USE " + db + ";";
 			Statement stdb = c.createStatement();
 			stdb.executeUpdate(Querydb);
 
-			String Query = "INSERT INTO videos (title, director, cli_id) values('" + title + "', '" + director +
-					"', " + cli_id + ")";
+			String Query = "INSERT INTO Proyectos (Nombre, Horas) values('"	+ name + "', '" + hours + "');";
 			Statement st = c.createStatement();
 			st.executeUpdate(Query);
 			JOptionPane.showMessageDialog(null, "Datos almacenados correctamente.");
@@ -81,11 +80,11 @@ public class Videos {
 	 */
 	public ResultSet getValues() {
 		try {
-			String Querydb = "USE "+ db + ";";
+			String Querydb = "USE " + db + ";";
 			Statement stdb = c.createStatement();
 			stdb.executeUpdate(Querydb);
 
-			String Query = "SELECT * FROM videos;";
+			String Query = "SELECT * FROM Proyectos;";
 
 			Statement st = c.createStatement();
 			java.sql.ResultSet resultSet;
@@ -113,7 +112,7 @@ public class Videos {
 			Statement stdb = c.createStatement();
 			stdb.executeUpdate(Querydb);
 
-			String Query = "DELETE FROM videos WHERE ID = " + ID + ";";
+			String Query = "DELETE FROM Proyectos WHERE ID = " + ID + ";";
 			Statement st = c.createStatement();
 			st.executeUpdate(Query);
 			JOptionPane.showMessageDialog(null, "Datos eliminados correctamente.");
@@ -128,17 +127,17 @@ public class Videos {
 	/**
 	 * Actualización de datos registrados
 	 * 
-	 * @param id
-	 * @param title
-	 * @param director
+	 * @param ID
+	 * @param newName
+	 * @param newHours
 	 */
-	public void updateData(int id, String title, String director, String cli) {
+	public void updateData(int ID, String newName, String newHours) {
 		try {
 			String Querydb = "USE " + db + ";";
 			Statement stdb = c.createStatement();
 			stdb.executeUpdate(Querydb);
 
-			String Query = "UPDATE videos SET title ='" + title + "', director ='" + director + "' WHERE ID=" + id + ";";
+			String Query = "UPDATE Proyectos SET Nombre='" + newName + "', Horas='" + newHours + "' WHERE ID=" + ID + ";";
 			Statement st = c.createStatement();
 			st.executeUpdate(Query);
 			JOptionPane.showMessageDialog(null, "Actualización realizada con éxito.");
@@ -149,6 +148,3 @@ public class Videos {
 		}
 	}
 }
-
-
-

@@ -1,4 +1,4 @@
-package main.java.Views;
+package Views;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;

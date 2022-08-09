@@ -1,13 +1,13 @@
-package main.java.MainApp;
+package MainApp;
 
 import javax.swing.JOptionPane;
 
-import main.java.Controllers.Controller;
-import main.java.Controllers.ControllerVideos;
-import main.java.Models.Cliente;
-import main.java.Models.Videos;
-import main.java.Views.View;
-import main.java.Views.ViewV;
+import Controllers.Controller;
+import Controllers.ControllerVideos;
+import Models.Cliente;
+import Models.Videos;
+import Views.View;
+import Views.ViewV;
 
 public class MainApp {
 	public static void main(String[] args) {

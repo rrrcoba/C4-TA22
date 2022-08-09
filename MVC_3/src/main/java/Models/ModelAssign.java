@@ -8,15 +8,15 @@ import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 
-public class Videos {
+public class ModelAssign {
 
 	// IMPORTANTE
 	// Recordad cambiar estoo
 
 	final static String user = "remote";
-	final static String pass = "....";
-	final static String url = "jdbc:mysql://192.168.1.58:3306?useTimezone=true&serverTimezone=UTC";
-	final static String db = "ud22ex1";
+	final static String pass = "abcd1234";
+	final static String url = "jdbc:mysql://192.168.1.31:3306?useTimezone=true&serverTimezone=UTC";
+	final static String db = "ud22ex3";
 
 	private Connection c;
 
@@ -55,14 +55,13 @@ public class Videos {
 	 * 
 	 * @throws ClassNotFoundException
 	 */
-	public void insertData(String title, String director, String cli_id) {
+	public void insertData(String DNI, String ID) {
 		try {
 			String Querydb = "USE " + db + ";";
 			Statement stdb = c.createStatement();
 			stdb.executeUpdate(Querydb);
 
-			String Query = "INSERT INTO videos (title, director, cli_id) values('" + title + "', '" + director +
-					"', " + cli_id + ")";
+			String Query = "INSERT INTO Asignado_A (Cientifico, Proyecto) values('" + DNI + "', '" + ID +"');";
 			Statement st = c.createStatement();
 			st.executeUpdate(Query);
 			JOptionPane.showMessageDialog(null, "Datos almacenados correctamente.");
@@ -85,7 +84,7 @@ public class Videos {
 			Statement stdb = c.createStatement();
 			stdb.executeUpdate(Querydb);
 
-			String Query = "SELECT * FROM videos;";
+			String Query = "SELECT * FROM Asignado_A;";
 
 			Statement st = c.createStatement();
 			java.sql.ResultSet resultSet;
@@ -106,14 +105,14 @@ public class Videos {
 	 * @param field
 	 * @param ID
 	 */
-	public void deleteRecord(String ID) {
+	public void deleteRecord(String id) {
 
 		try {
 			String Querydb = "USE " + db + ";";
 			Statement stdb = c.createStatement();
 			stdb.executeUpdate(Querydb);
 
-			String Query = "DELETE FROM videos WHERE ID = " + ID + ";";
+			String Query = "DELETE FROM Asignado_A WHERE Proyecto = " + id + ";";
 			Statement st = c.createStatement();
 			st.executeUpdate(Query);
 			JOptionPane.showMessageDialog(null, "Datos eliminados correctamente.");
@@ -124,31 +123,5 @@ public class Videos {
 		}
 
 	}
-
-	/**
-	 * Actualización de datos registrados
-	 * 
-	 * @param id
-	 * @param title
-	 * @param director
-	 */
-	public void updateData(int id, String title, String director, String cli) {
-		try {
-			String Querydb = "USE " + db + ";";
-			Statement stdb = c.createStatement();
-			stdb.executeUpdate(Querydb);
-
-			String Query = "UPDATE videos SET title ='" + title + "', director ='" + director + "' WHERE ID=" + id + ";";
-			Statement st = c.createStatement();
-			st.executeUpdate(Query);
-			JOptionPane.showMessageDialog(null, "Actualización realizada con éxito.");
-
-		} catch (SQLException e) {
-			JOptionPane.showMessageDialog(null, e.getMessage() + "\n Error en la actualización de datos.", "ERROR", 0);
-			e.printStackTrace();
-		}
-	}
 }
-
-
 
